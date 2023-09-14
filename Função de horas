@@ -1,0 +1,50 @@
+ if(totalHorasExtras.valorExtra.sum() > 0) {
+    String HorasExtras = totalHorasExtras.valorExtra.sum()
+    def partesE = HorasExtras.split("\\.")
+    def inteirosE = partesE[0].toInteger()
+    def decimaisE = partesE[1].toInteger()
+    int minutosE = decimaisE * 0.6
+    if(minutosE < 10) { 
+      def minutosformatadoE = String.format("%02d", minutosE)
+      totalHorasExtrasFinal = inteirosE +"."+ minutosformatadoE
+      totalHorasExtrasFinal = totalHorasExtrasFinal.toString()
+    }else {
+      minutosformatadoE = minutosE
+      totalHorasExtrasFinal = inteirosE +"."+ minutosformatadoE
+      totalHorasExtrasFinal = totalHorasExtrasFinal.toString()
+    }
+  }
+  if(totalHorasFaltas.valorfalta.sum() > 0) {
+    String HorasFaltasFinal = totalHorasFaltas.valorfalta.sum()
+    def partesf = HorasFaltasFinal.split("\\.")
+    def inteirosf = partesf[0].toInteger()
+    def decimaisf = partesf[1].toInteger()
+    int minutosf = decimaisf * 0.6
+    if(minutosf < 10) { 
+      def minutosformatadof = String.format("%02d", minutosf)
+      totalHorasFaltasFinal = inteirosf +"."+ minutosformatadof
+      totalfinalsaldo = totalHorasFaltasFinal
+      totalHorasFaltasFinal = "-" + totalHorasFaltasFinal.toString()
+    }else {
+      minutosformatadof = minutosf
+      totalHorasFaltasFinal = inteirosf +"."+ minutosformatadof
+      totalfinalsaldo = totalHorasFaltasFinal
+      totalHorasFaltasFinal = "-" + totalHorasFaltasFinal.toString()
+    }
+  }
+  String saldoTotal = totalHorasTrabalhadas.valor.sum() + totalHorasExtras.valorExtra.sum() - totalHorasFaltas.valorfalta.sum()
+  def partesS = saldoTotal.split("\\.")
+  def inteirosS= partesS[0].toInteger()
+  def decimaisS = partesS[1].toInteger()
+  int minutosS = decimaisS * 0.6
+  if(minutosS < 10) { 
+    def minutosformatadoS = String.format("%02d", minutosS)
+    saldoMes = inteirosS +"."+ minutosformatadoS
+    totalfinalsaldo = saldoMes
+    saldoMes = saldoMes.toString()
+  }else {
+    minutosformatadoS = minutosS
+    saldoMes = inteirosS +"."+ minutosformatadoS
+    totalfinalsaldo = saldoMes
+    saldoMes = saldoMes.toString()
+  }
